@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.practice</groupId>
+  <artifactId>java</artifactId>
+  <version>1.0.0</version>
+
+  <name>java</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>11</maven.compiler.source>
+    <maven.compiler.target>11</maven.compiler.target>
+  </properties>
+  
+  <dependencies>
+    <dependency>
+      <groupId>com.google.guava</groupId>
+      <artifactId>guava</artifactId>
+      <version>31.1-jre</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.package</groupId>
+      <artifactId>practice</artifactId>
+      <version>1.0-SNAPSHOT</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.codehaus.mojo</groupId>
+      <artifactId>exec-maven-plugin</artifactId>
+      <version>3.0.0</version>
+    </dependency>
+    <dependency>
+      <groupId>info.picocli</groupId>
+      <artifactId>picocli</artifactId>
+      <version>3.9.6</version>
+    </dependency>
+    <!--
+    <dependency>
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-dependency-plugin</artifactId>
+      <version>3.2.0</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-assembly-plugin</artifactId>
+      <version>3.3.0</version>
+    </dependency>
+    -->
+  </dependencies>
+  
+  <!-- Central repository에 없는 애들 업로드용 정보 -->
+  <!--<repositories>
+    <repository>
+      <id>local-repository</id>
+      <url>file://${project.basedir}/libs</url>
+    </repository>
+  </repositories>-->
+
+  <build>
+    <sourceDirectory>${project.basedir}/src</sourceDirectory>
+    <!-- <outputDirectory></outputDirectory>
+    <testSourceDirectory></testSourceDirectory>
+    <testOutputDirectory></testOutputDirectory> -->
+    <!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
+    <!-- 
+      pluginMangement : 해당 pom.xml을 부모로 하는 자식 pom.xml이 선언된 플러그인의 설정 값을 사용하기 위해 선언함
+      여기에다 두면 실제로 설정 값만 지정한 것이기 때문에 실행되지 않으므로, 외부에 <plugins>에 선언해서 실행되게끔 함
+      디폴트(life-cycle)로 실행되는 플러그인이 있으니 참고 바람. 이땐 pluginManagement에서 설정된 버전으로 실행됨
+      1. maven-clean-plugin:clean
+      2. maven-resources-plugin:{version}:resources 
+      3. maven-compiler-plugin:{version}:compile
+      4. maven-resources-plugin:{version}:testResources
+      5. maven-compiler-plugin:{version}:testCompile
+      6. maven-surefire-plugin:{version}:test
+      7. maven-jar-plugin:{version}:jar
+     -->
+    <pluginManagement>
+      <plugins>
+        <!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-clean-plugin</artifactId>
+          <version>3.1.0</version>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId> 
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.8.0</version>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-shade-plugin</artifactId>
+          <version>3.2.4</version>
+          <executions>
+             <execution>
+                <phase>package</phase>
+                <goals>
+                   <goal>shade</goal>
+                </goals>
+                <configuration>
+                   <transformers>
+                      <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                        <manifestEntries>
+                          <Main-Class>GuavaTest</Main-Class>
+                          <Build-Number>100</Build-Number>
+                        </manifestEntries>
+                      </transformer>
+                   </transformers>
+                </configuration>
+             </execution>
+          </executions>
+       </plugin>
+      
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-dependency-plugin</artifactId>
+          <version>3.2.0</version>
+          <executions>
+            <execution>
+              <id>copy-dependencies</id>
+              <phase>prepare-package</phase>
+              <goals>
+                <goal>copy-dependencies</goal>
+              </goals>
+              <configuration>
+                <outputDirectory>${project.build.directory}/libs</outputDirectory>
+              </configuration>
+            </execution>
+          </executions>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-jar-plugin</artifactId>
+          <version>3.2.0</version>
+          <configuration>
+            <archive>
+              <manifest>
+                <addClasspath>true</addClasspath>
+                <classpathPrefix>libs/</classpathPrefix>
+                <mainClass>GuavaTest</mainClass>
+              </manifest>
+            </archive>
+          </configuration>
+          <!-- package 단계에서 실행하지 않으려면 default-jar 를 override 한다. -->
+          <!-- <executions>
+            <execution>
+              <id>default-jar</id>
+              <phase>none</phase>
+            </execution>
+          </executions> -->
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-assembly-plugin</artifactId>
+          <version>3.3.0</version>
+          <executions>
+            <execution>
+              <id>make-assembly</id>
+              <phase>package</phase>
+              <goals>
+                <goal>single</goal>
+              </goals>
+              <configuration>
+                <archive>
+                  <manifest>
+                    <mainClass>GuavaTest</mainClass>
+                  </manifest>
+                </archive>
+                <descriptorRefs>
+                  <descriptorRef>jar-with-dependencies</descriptorRef>
+                </descriptorRefs>
+                <finalName>executable-jar-with-library</finalName>
+                <appendAssemblyId>false</appendAssemblyId>
+              </configuration>
+            </execution>
+          </executions>
+        </plugin>
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>exec-maven-plugin</artifactId>
+          <version>3.0.0</version>
+          <configuration>
+            <mainClass>GuavaTest</mainClass>
+          </configuration>
+          <executions>
+            <execution>
+              <id>execute-java</id>
+              <phase>package</phase>
+            </execution>
+          </executions>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+    <!-- 실제로 여기에 선언을 해줌. property 값은 plugnManagement에 있는 것을 따름 -->
+    <plugins>
+      <!-- Default plugin은 선언 안해도 됨 -->
+      <!--
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-clean-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId> 
+        <artifactId>maven-compiler-plugin</artifactId>
+      </plugin>
+      -->
+      
+      <!-- 
+        의존 라이브러리를 전부 실행 파일 경로에 맞춰 불러올려면 dependency, 
+        의존 라이브러리를 하나에 assemble하려면 assembly, 적은 의존성 라이브러리에서 정상 동작하고
+        의존성이 큰 경우 자바 클래스 이름 conflict가 발생한다고 함
+        (https://stackoverflow.com/questions/38548271/difference-between-maven-plugins-assembly-plugins-jar-plugins-shaded-plugi)
+      -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+      </plugin>
+      <!-- <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-assembly-plugin</artifactId>
+      </plugin> -->
+      
+      <!-- 
+        의존성을 포함한 실행 가능한 single jar(이하 uber-jar) 파일을 생성
+        대형 프로젝트에서 사용해도 안정적이라, 이걸 사용하길 권장
+       -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-shade-plugin</artifactId>
+      </plugin>
+
+      <plugin> 
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </build>
+</project>
