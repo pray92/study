@@ -1,5 +1,5 @@
-# Gradle
-Examples for `Gradle`
+# Maven
+Examples for `Maven`
 
 ---
 
