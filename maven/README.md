@@ -22,7 +22,7 @@ Examples for `Maven`
 - If there is libraries for using, maven automatically call libaries to local repository (Default : `~/.m2/repository`)
 ### build
 #### sourceDirectory
-- Maven's default compile path is `${project.basedir}/src/java/com/src`
+- Maven's default compile path is `${project.basedir}/src/main/java/{groupId}`
 - This property is for setting compile path customly
 #### pluginManagement
 - Set the plugins what to use when `maven package`
