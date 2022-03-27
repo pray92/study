@@ -1,8 +1,8 @@
-import thread.Example2;
+import thread.Example3;
 
 public class Main{
 
     public static void main(String[] args) {
-        Example2.execute();
+        Example3.execute();
     }
 }
