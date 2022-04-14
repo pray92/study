@@ -1,8 +1,8 @@
-import ch6.TvText;
+import ch6.TvText4;
 
 public class Main{
 
     public static void main(String[] args) {
-        TvText.execute();
+        TvText4.execute();
     }
 }
