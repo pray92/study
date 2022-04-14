@@ -1,4 +1,4 @@
-import thread.Example6;
+import ch13.Example6;
 
 public class Main{
 

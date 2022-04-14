@@ -1,4 +1,4 @@
-package thread;
+package ch13;
 
 public class Example2 {
     public static void execute() {
