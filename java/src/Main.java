@@ -1,8 +1,8 @@
-import ch13.Example6;
+import ch6.TvText;
 
 public class Main{
 
     public static void main(String[] args) {
-        Example6.execute();
+        TvText.execute();
     }
 }
