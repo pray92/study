@@ -1,8 +1,7 @@
-import ch6.TvText4;
+import ch6.OverloadingTest;
 
 public class Main{
-
     public static void main(String[] args) {
-        TvText4.execute();
+        OverloadingTest.execute();
     }
 }
