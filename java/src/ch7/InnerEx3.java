@@ -18,7 +18,7 @@ public class InnerEx3 {
     void myMethod() {
         int lv = 0;
         final int LV = 0; // 1.8부터 생략 가능해요
-
+        //lv = 1;
         class LocalInner {
             int liv = outerIv;
             int liv2 = outerCv;
