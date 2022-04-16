@@ -12,5 +12,7 @@ public class InstanceofTest {
         if (fe instanceof Object) {
             System.out.println("It's object.");
         }
+        // 클래스명 반환
+        System.out.println(fe.getClass().getName());
     }
 }
