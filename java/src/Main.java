@@ -1,8 +1,8 @@
-import ch7.PolyArgumentTest2;
+import ch7.InterfaceTest2;
 
 public class Main{
     public static void main(String[] args) {
-        PolyArgumentTest2.execute();
+        InterfaceTest2.execute();
     }
 
 }
