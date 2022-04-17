@@ -1,5 +1,5 @@
 
-import ch7.TryWithResourece;
+import ch8.TryWithResourece;
 
 public class Main{
     public static void main(String[] args) throws Exception {
