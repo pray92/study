@@ -1,10 +1,11 @@
-import ch7.InnerEx4;
-import ch8.FinallyTest3;
+
+import ch7.TryWithResourece;
 
 public class Main{
     public static void main(String[] args) throws Exception {
         //InnerEx4.execute();
-        FinallyTest3.execute();   
+        TryWithResourece.execute();   
+
     }
 
 }
