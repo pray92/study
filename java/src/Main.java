@@ -1,11 +1,8 @@
-
-import ch8.ChainedExceptoinEx;
-import ch8.TryWithResourece;
+import ch9.ShallowDeepCopy;
 
 public class Main{
-    public static void main(String[] args) throws Exception {
-        //InnerEx4.execute();
-        ChainedExceptoinEx.execute();
+    public static void main(String[] args) {
+        ShallowDeepCopy.execute();
     }
 
 }
