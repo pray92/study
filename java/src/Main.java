@@ -1,9 +1,9 @@
 
-import ch9.RegularEx2;
+import ch9.RegularEx3;
 
 public class Main{
     public static void main(String[] args) {
-        RegularEx2.execute();
+        RegularEx3.execute();
     }
 
 }
