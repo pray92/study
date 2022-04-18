@@ -1,9 +1,9 @@
-import ch9.StringEx4;
-import ch9.WrapperEx1;
+
+import ch9.WrapperEx2;
 
 public class Main{
     public static void main(String[] args) {
-        WrapperEx1.execute();
+        WrapperEx2.execute();
     }
 
 }
