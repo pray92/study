@@ -1,8 +1,8 @@
 
-import ch15.FileCopy;
+import ch15.BufferedOutputStreamEx1;
 
 public class Main{
     public static void main(String[] args) {
-        FileCopy.execute(args);
+        BufferedOutputStreamEx1.execute();
     }
 }
