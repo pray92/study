@@ -1,9 +1,9 @@
 
-import ch15.IOEx2;
+import ch15.IOEx4;
 
 public class Main{
     public static void main(String[] args) {
-        IOEx2.execute();
+        IOEx4.execute();
     }
 
 }
