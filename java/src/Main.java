@@ -1,8 +1,8 @@
 
-import ch15.FileViewer;
+import ch15.FileCopy;
 
 public class Main{
     public static void main(String[] args) {
-        FileViewer.execute(args);
+        FileCopy.execute(args);
     }
 }
