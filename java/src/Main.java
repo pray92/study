@@ -1,9 +1,8 @@
 
-import ch15.IOEx4;
+import ch15.FileViewer;
 
 public class Main{
     public static void main(String[] args) {
-        IOEx4.execute();
+        FileViewer.execute(args);
     }
-
 }
