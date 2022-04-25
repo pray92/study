@@ -1,7 +1,8 @@
-import ch9.StringTokenizerEx1;
+
+import ch9.StringTokenizerEx2;
 
 public class Main{
     public static void main(String[] args) {
-        StringTokenizerEx1.execute();
+        StringTokenizerEx2.execute();
     }
 }
