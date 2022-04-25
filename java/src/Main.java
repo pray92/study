@@ -1,8 +1,7 @@
-
-import ch15.BufferedOutputStreamEx1;
+import ch9.StringTokenizerEx1;
 
 public class Main{
     public static void main(String[] args) {
-        BufferedOutputStreamEx1.execute();
+        StringTokenizerEx1.execute();
     }
 }
