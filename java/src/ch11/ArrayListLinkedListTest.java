@@ -9,19 +9,19 @@ public class ArrayListLinkedListTest {
         ArrayList a1 = new ArrayList<>(20_000_000);
         LinkedList l1 = new LinkedList<>();
 
-        System.out.print("순차적 추가");
+        System.out.println("순차적 추가");
         System.out.println("ArrayList : " + add1(a1));
         System.out.println("LinkedList : " + add1(l1));
 
-        System.out.print("중간에 삽입");
+        System.out.println("중간에 삽입");
         System.out.println("ArrayList : " + add2(a1));
         System.out.println("LinkedList : " + add2(l1));
 
-        System.out.print("중간에 삭제");
+        System.out.println("중간에 삭제");
         System.out.println("ArrayList : " + remove2(a1));
         System.out.println("LinkedList : " + remove2(l1));
 
-        System.out.print("순차적 삭제");
+        System.out.println("순차적 삭제");
         System.out.println("ArrayList : " + remove1(a1));
         System.out.println("LinkedList : " + remove1(l1));
     }
