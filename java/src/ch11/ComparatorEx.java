@@ -15,11 +15,13 @@ public class ComparatorEx {
         
         Arrays.sort(arrStr, new Descending<String>());
         System.out.println("arrStr : " + Arrays.toString(arrStr));
+
     }
 
 }
 
 class Descending<T> implements Comparator<T> {
+    @Override
     public int compare(Object obj1, Object obj2) {
         if(obj1 instanceof Comparable && obj2 instanceof Comparable){
             Comparable c1 = (Comparable)obj1;

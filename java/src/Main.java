@@ -1,7 +1,8 @@
-import ch11.ComparatorEx;
+import ch14.LambdaEx1;
 
-public class Main{
+public class Main {
+
     public static void main(String[] args) {
-        ComparatorEx.execute();
-    }   
+        LambdaEx1.execute();
+    }
 }
