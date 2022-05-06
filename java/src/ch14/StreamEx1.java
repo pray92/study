@@ -1,11 +1,13 @@
 package ch14;
 
 import java.util.Comparator;
+import java.util.IntSummaryStatistics;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class StreamEx1 {
     public static void execute() {
-        Stream<Student> stream = Stream.of(
+        Student[] stdArr = {
             new Student("이자바", 3, 300),
             new Student("김자바", 1, 200),
             new Student("안자바", 2, 100),
@@ -13,11 +15,23 @@ public class StreamEx1 {
             new Student("소자바", 1, 200),
             new Student("나자바", 3, 290),
             new Student("바자바", 3, 180)
-        );
+        };
+
+        Stream<Student> stream = Stream.of(stdArr);
 
         stream.sorted(Comparator.comparing(Student::getBan)
             .thenComparing(Comparator.naturalOrder()))
             .forEach(System.out::println);
+
+        // 스트림 닫혔으니 재생성
+        stream = Stream.of(stdArr);
+        IntStream stuScoreStream = stream.mapToInt(Student::getTotalScore);
+        IntSummaryStatistics stat = stuScoreStream.summaryStatistics();
+        System.out.println("count = " + stat.getCount());
+        System.out.println("sum = " + stat.getSum());
+        System.out.println("average = " + stat.getAverage());
+        System.out.println("max = " + stat.getMax());
+        System.out.println("min = " + stat.getMin());
     }
     
 }
