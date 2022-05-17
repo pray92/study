@@ -5,7 +5,7 @@ public class ReflectionEx {
     public static void execute() {
         try{
             Object app = new App();
-            Class appClass= App.class;
+            Class<App> appClass= App.class;
             Method appMethod = appClass.getDeclaredMethod("privateAdd", int.class, int.class);
             appMethod.setAccessible(true);
             System.out.println((int)appMethod.invoke(app, 1, 2));
