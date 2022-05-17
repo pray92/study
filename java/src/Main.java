@@ -1,8 +1,7 @@
-import ch15.PipedReaderWriter;
-import ch16.NetworkEx1;
+import ch13.ThreadEx7;
 
 public class Main {
     public static void main(String[] args) {
-        NetworkEx1.execute();
+        ThreadEx7.execute();
     }
 }
