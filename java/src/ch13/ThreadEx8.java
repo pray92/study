@@ -5,13 +5,14 @@ public class ThreadEx8 {
         ThreadEx8_1 th1 = new ThreadEx8_1();
         ThreadEx8_2 th2 = new ThreadEx8_2();
 
-        th2.setPriority(8);
 
         System.out.println("Priority of th1(-) : " + th1.getPriority());
         System.out.println("Priority of th2(|) : " + th2.getPriority());
 
         th1.start();
         th2.start();
+
+        th2.setPriority(8);
     }
 }
 
