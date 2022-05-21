@@ -1,8 +1,8 @@
 
-import ch13.ThreadEx19;
+import ch13.ThreadEx20;
 
-public class Main {
+class Main {
     public static void main(String[] args) {
-        ThreadEx19.execute();
+        ThreadEx20.execute();
     }
 }
