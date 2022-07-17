@@ -1,0 +1,8 @@
+# Ignore maven build directory.
+target/
+
+# Ignore automatically created in MacOS
+# Reference : https://github.com/redhat-developer/vscode-java/issues/634
+.project
+.settings
+.classpath
