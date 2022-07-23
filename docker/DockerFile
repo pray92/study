@@ -1,0 +1,26 @@
+# Base image
+# Layer : One thing for command(FROM, WORKDIR, COPY, RUN, etc)
+# Command must be in high-leveled if it changes a lot
+# because docker caches those works. As changeables in higher level,
+# docker can reuse cached configuration and it results faster working.
+FROM node:16-alpine     
+
+# Same as 'cd'
+WORKDIR /app
+
+# What to copy
+# The more changeables are recommended to be copied later for 'layer system'
+# so, *.json things are copied first
+COPY package.json package-lock.json ./
+
+# use 'ci' rather than 'install' in docker
+# Since packages update faster, so it differed when newly install npm
+# 'ci' installs package depending on package-lock.json, so we don't
+# need burdening to synchronizing version
+RUN npm ci 
+
+COPY index.js .
+
+ENTRYPOINT [ "node", "index.js" ]
+
+# docker build -f {Docker file name} -t {Image name} {Path where docker file exists}
